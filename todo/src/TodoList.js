@@ -11,10 +11,9 @@ const TodoList = () => {
     }
   };
 
-  // This function removes a todo from the todos based on position
   const removeTodo = (index) => {
-    const newTodos = todos.filter((_, i) => i !== index); // creates a new array without todo you want removed
-    setTodos(newTodos); // updates todos
+    const newTodos = todos.filter((_, i) => i !== index); // remakes todos list withoout todo at specified index
+    setTodos(newTodos);
   };
 
   return (
@@ -23,18 +22,22 @@ const TodoList = () => {
       <input
         type="text"
         value={todo}
-        onChange={(e) => setTodo(e.target.value)} // updates todo variable with the val from input field
+        onChange={(e) => setTodo(e.target.value)}
         placeholder="Add a new todo"
       />
       <button onClick={addTodo}>Add Todo</button>
+      {/* adds todo with text*/}
       <ul>
         {todos.map((todo, index) => (
           <li key={index}>
             {todo}
             <button onClick={() => removeTodo(index)}>Remove</button>
+            {/* removes todo at specific position */}
           </li>
         ))}
       </ul>
     </div>
   );
 };
+
+export default TodoList;
